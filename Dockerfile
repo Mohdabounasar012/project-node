@@ -2,7 +2,7 @@
 FROM node:20
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Copy the package.json and package-lock.json (if available)
 COPY package*.json ./
@@ -14,10 +14,10 @@ RUN npm install
 COPY . .
 
 # Build the node application
-RUN npm run build
+#RUN npm run build
 
 # Expose the port that your app will run on
 EXPOSE 3000
 
 # Define the command to run the application
-CMD ["npm", "run", "start"]
+CMD ["node", "server.js"]
