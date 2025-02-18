@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Node.js MySQL CRUD Application
 
 A CRUD (Create, Read, Update, Delete) application developed using Node.js and MySQL, showcasing database management and API development skills.
@@ -83,3 +84,6 @@ For detailed API documentation and usage examples, refer to the API Documentatio
 
 License
 This project is licensed under the MIT License.
+=======
+# project-node
+>>>>>>> cdb4bf87e5ec85ae464469b923ba6c6b94b31905
