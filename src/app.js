@@ -20,11 +20,11 @@ app.set('views', path.join(__dirname, 'views'));
 // middlewares
 app.use(morgan('dev'));
 app.use(myConnection(mysql, {
-    host: 'localhost',
-    user: 'root',
-    password: PASS,
+    host: 'database-1.ch2wm0wuekno.ap-northeast-1.rds.amazonaws.com',
+    user: 'admin',
+    password: 'Abounasar',
     port: '3306',
-    database: 'crudnodejsmysql'
+    database: 'mydb'
 }, 'single'));
 app.use(express.urlencoded({extended: false}));
 
