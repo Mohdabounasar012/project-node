@@ -3,16 +3,23 @@ version: '3.7'
 services:
   backend:
     build:
-      context: ./  # This should be the relative path to the current folder
+      context: ./  
     ports:
       - "3000:3000"
     environment:
-      - DB_HOST=database-1.ch2wm0wuekno.ap-northeast-1.rds.amazonaws.com
-      - DB_USER=admin
-      - DB_PASSWORD=Abounasar
+      - DB_HOST=localhost 
+      - DB_USER=root
+      - DB_PASSWORD=PASS
       - DB_NAME=mydb
     depends_on:
       - db
+    # Optional: Use healthcheck to ensure DB is ready before backend starts
+    healthcheck:
+      test: ["CMD", "mysqlroot", "ping", "-h", "localhost", "-u", "root", "-pPASS"]
+      interval: 30s
+      retries: 5
+      start_period: 10s
+      timeout: 20s
 
   db:
     image: mysql:5.7
@@ -23,6 +30,12 @@ services:
       - "3307:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - app-network  
 
 volumes:
   mysql-data:
+
+networks:
+  app-network:
+    driver: bridge
